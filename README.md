@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # TicoAutos - Frontend Client
 
 ## Course Information
@@ -25,6 +24,3 @@ Following professional standards, the project is organized into layers:
 1. Clone the repo: `git clone [url-del-repo]`
 2. Install dependencies: `npm install`
 3. Run dev server: `ng serve`
-=======
-# TicoAutos-Client
->>>>>>> 68f562552d2ab56da3ad75e3464c7624f5caf24a

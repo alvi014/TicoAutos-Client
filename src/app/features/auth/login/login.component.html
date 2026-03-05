@@ -1,0 +1,57 @@
+<div
+    class="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 px-4">
+    <div
+        class="max-w-md w-full space-y-8 bg-white/10 backdrop-blur-lg p-10 rounded-2xl border border-white/20 shadow-2xl">
+
+        <div class="text-center">
+            <h2 class="text-4xl font-extrabold text-white tracking-tight">Tico<span class="text-blue-400">Autos</span>
+            </h2>
+            <p class="mt-2 text-sm text-slate-300">Bienvenido de vuelta, ingresa a tu cuenta</p>
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="mt-8 space-y-6">
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 ml-1">Correo Electrónico</label>
+                    <input formControlName="email" type="email" required
+                        class="mt-1 block w-full px-4 py-3 bg-slate-800/50 border border-slate-700 text-white rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none placeholder-slate-500"
+                        placeholder="admin@ticoautos.com">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-slate-300 ml-1">Contraseña</label>
+                    <input formControlName="password" type="password" required
+                        class="mt-1 block w-full px-4 py-3 bg-slate-800/50 border border-slate-700 text-white rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all outline-none placeholder-slate-500"
+                        placeholder="••••••••">
+                </div>
+            </div>
+
+            @if (errorMessage) {
+            <div
+                class="animate-bounce bg-red-500/20 border border-red-500/50 text-red-200 text-xs py-2 px-4 rounded-lg text-center">
+                {{ errorMessage }}
+            </div>
+            }
+
+            <button type="submit" [disabled]="loginForm.invalid"
+                class="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-bold rounded-xl text-white bg-blue-600 hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed transition-all shadow-lg shadow-blue-900/40">
+                <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+                    <svg class="h-5 w-5 text-blue-300 group-hover:text-blue-200" fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path fill-rule="evenodd"
+                            d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
+                            clip-rule="evenodd" />
+                    </svg>
+                </span>
+                Iniciar Sesión
+            </button>
+        </form>
+
+        <div class="text-center">
+            <p class="text-sm text-slate-400">
+                ¿No tienes cuenta?
+                <a href="#" class="font-medium text-blue-400 hover:text-blue-300 transition-colors">Regístrate aquí</a>
+            </p>
+        </div>
+    </div>
+</div>
