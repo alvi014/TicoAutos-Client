@@ -8,8 +8,9 @@ export interface Vehicle {
   imageUrl: string;
   isSold: boolean;
   ownerId: number;
-  ownerName: string;  
+  ownerName: string;
   createdAt: string;
+  unansweredQuestions: number;
 }
 
 export interface VehicleFilter {
