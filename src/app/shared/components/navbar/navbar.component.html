@@ -5,8 +5,10 @@
       TICO<span class="text-blue-500">AUTOS</span>
     </a>
 
-    <div class="flex items-center space-x-8">
-      <a routerLink="/vehicles" class="text-slate-300 hover:text-white font-medium transition-colors">Comprar</a>
+    <div class="flex items-center space-x-6">
+      <a routerLink="/vehicles" class="text-slate-300 hover:text-white font-medium transition-colors">
+        Comprar
+      </a>
 
       <ng-container *ngIf="!authService.getToken()">
         <a routerLink="/register" class="text-slate-300 hover:text-white font-medium transition-colors">
@@ -19,21 +21,29 @@
       </ng-container>
 
       <ng-container *ngIf="authService.getToken()">
-        <a routerLink="/my-vehicles" class="text-slate-300 hover:text-white font-medium transition-colors">
-          Mis Autos
-        </a>
-          <span class="text-slate-300 text-sm">
+
+        <span class="text-slate-400 text-sm">
           👤 {{ authService.getUserName() }}
         </span>
+
+        <a routerLink="/my-vehicles" class="relative text-slate-300 hover:text-white font-medium transition-colors">
+          Mis Autos
+          @if (unansweredCount > 0) {
+            <span class="absolute -top-2 -right-4 bg-yellow-500 text-black text-xs font-black w-5 h-5 rounded-full flex items-center justify-center">
+              {{ unansweredCount > 9 ? '9+' : unansweredCount }}
+            </span>
+          }
+        </a>
+
         <button (click)="logout()"
-          class="text-red-400 hover:text-red-300 font-medium transition-colors flex items-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24"
-            stroke="currentColor">
+          class="text-red-400 hover:text-red-300 font-medium transition-colors flex items-center gap-1">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
               d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
           </svg>
           Salir
         </button>
+
       </ng-container>
     </div>
   </div>
