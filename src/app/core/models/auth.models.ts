@@ -1,12 +1,16 @@
-//Model  
 export interface LoginRequest {
-  email: string; 
+  email: string;
   password: string;
 }
 
-// Modelo of request
+export interface RegisterRequest {
+  fullName: string;
+  email: string;
+  password: string;
+}
+
 export interface AuthResponse {
   token: string;
-  userName: string;
- 
+  email: string;
+  fullName: string;
 }

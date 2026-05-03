@@ -1,0 +1,85 @@
+<div class="min-h-screen bg-slate-900 px-6 py-8">
+  <div class="max-w-2xl mx-auto">
+
+    <a routerLink="/my-vehicles"
+      class="inline-flex items-center text-slate-400 hover:text-white mb-6 transition-colors">
+      ← Volver a mis autos
+    </a>
+
+    <h1 class="text-3xl font-black text-white mb-8">
+      Publicar <span class="text-blue-400">Vehículo</span>
+    </h1>
+
+    <form [formGroup]="vehicleForm" (ngSubmit)="onSubmit()"
+      class="bg-white/5 border border-white/10 rounded-2xl p-8 space-y-5">
+
+      <div class="grid grid-cols-2 gap-5">
+        <div>
+          <label class="block text-sm font-medium text-slate-300 mb-1">Marca *</label>
+          <input formControlName="brand" type="text" placeholder="Toyota"
+            class="w-full px-4 py-3 bg-slate-800 border border-slate-700 text-white rounded-xl outline-none focus:ring-2 focus:ring-blue-500" />
+          @if (vehicleForm.get('brand')?.invalid && vehicleForm.get('brand')?.touched) {
+            <p class="text-red-400 text-xs mt-1">Requerido, máx 50 caracteres.</p>
+          }
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium text-slate-300 mb-1">Modelo *</label>
+          <input formControlName="model" type="text" placeholder="Corolla"
+            class="w-full px-4 py-3 bg-slate-800 border border-slate-700 text-white rounded-xl outline-none focus:ring-2 focus:ring-blue-500" />
+          @if (vehicleForm.get('model')?.invalid && vehicleForm.get('model')?.touched) {
+            <p class="text-red-400 text-xs mt-1">Requerido, máx 50 caracteres.</p>
+          }
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-5">
+        <div>
+          <label class="block text-sm font-medium text-slate-300 mb-1">Año *</label>
+          <input formControlName="year" type="number" placeholder="2020"
+            class="w-full px-4 py-3 bg-slate-800 border border-slate-700 text-white rounded-xl outline-none focus:ring-2 focus:ring-blue-500" />
+          @if (vehicleForm.get('year')?.invalid && vehicleForm.get('year')?.touched) {
+            <p class="text-red-400 text-xs mt-1">Año inválido.</p>
+          }
+        </div>
+
+        <div>
+        <label class="block text-sm font-medium text-slate-300 mb-1">Precio (₡) *</label>
+          <input formControlName="price" type="number" placeholder="12500"
+            class="w-full px-4 py-3 bg-slate-800 border border-slate-700 text-white rounded-xl outline-none focus:ring-2 focus:ring-blue-500" />
+          @if (vehicleForm.get('price')?.invalid && vehicleForm.get('price')?.touched) {
+            <p class="text-red-400 text-xs mt-1">Debe ser mayor a 0.</p>
+          }
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-slate-300 mb-1">URL de imagen</label>
+        <input formControlName="imageUrl" type="text" placeholder="https://..."
+          class="w-full px-4 py-3 bg-slate-800 border border-slate-700 text-white rounded-xl outline-none focus:ring-2 focus:ring-blue-500" />
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-slate-300 mb-1">Descripción</label>
+        <textarea formControlName="description" rows="4" placeholder="Descripción del vehículo..."
+          class="w-full px-4 py-3 bg-slate-800 border border-slate-700 text-white rounded-xl outline-none focus:ring-2 focus:ring-blue-500 resize-none">
+        </textarea>
+        @if (vehicleForm.get('description')?.invalid && vehicleForm.get('description')?.touched) {
+          <p class="text-red-400 text-xs mt-1">Máx 500 caracteres.</p>
+        }
+      </div>
+
+      @if (errorMessage) {
+        <div class="bg-red-500/20 border border-red-500/50 text-red-200 text-xs py-2 px-4 rounded-lg text-center">
+          {{ errorMessage }}
+        </div>
+      }
+
+      <button type="submit" [disabled]="vehicleForm.invalid || loading"
+        class="w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed">
+        {{ loading ? 'Publicando...' : 'Publicar vehículo' }}
+      </button>
+
+    </form>
+  </div>
+</div>
